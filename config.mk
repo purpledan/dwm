@@ -11,8 +11,8 @@ X11INC = ${PREFIX}/include
 X11LIB = ${PREFIX}/lib
 
 # Xinerama, comment if you don't want it
-#XINERAMALIBS  = -lXinerama
-#XINERAMAFLAGS = -DXINERAMA
+XINERAMALIBS  = -lXinerama
+XINERAMAFLAGS = -DXINERAMA
 
 # freetype
 FREETYPELIBS = -lfontconfig -lXft
