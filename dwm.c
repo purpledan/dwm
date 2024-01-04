@@ -207,6 +207,7 @@ static void seturgent(Client *c, int urg);
 static void showhide(Client *c);
 static void spawn(const Arg *arg);
 static void tag(const Arg *arg);
+static void tagfun(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void tile(Monitor *m);
 static void togglebar(const Arg *arg);
@@ -1673,6 +1674,17 @@ tag(const Arg *arg)
 		selmon->sel->tags = arg->ui & TAGMASK;
 		focus(NULL);
 		arrange(selmon);
+	}
+}
+
+void
+tagfun(const Arg *arg)
+{
+	unsigned int i = arg->ui & TAGMASK, j = 0;
+	if (i) {
+		while ( i >>= 1) j++;
+		if (tagfun_cmds[j].func)
+			tagfun_cmds[j].func(&tagfun_cmds[j].arg);
 	}
 }
 
