@@ -85,12 +85,19 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_sunpurple, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+/* Personal programs */
+static const char *firefoxcmd[]		= { "firefox", NULL };
+static const char *clioncmd[]		= { "clion", NULL };
+static const char *texstudiocmd[]	= { "texstudio", NULL };
+
 static struct {
 	void (*func)(const Arg *arg);
 	const Arg arg;
 }	tagfun_cmds[LENGTH(tags)] = {
-		[0] = { killclient, {0} },
-		[1] = { spawn, {.v = termcmd} },
+		[0] = { spawn, {.v = termcmd} },
+		[1] = { spawn, {.v = firefoxcmd} },
+		[3] = { spawn, {.v = clioncmd} },
+		[4] = { spawn, {.v = texstudiocmd} },
 	};
 
 static const Key keys[] = {
